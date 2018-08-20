@@ -5,25 +5,32 @@ using UnityEngine;
 public class battery1 : MonoBehaviour {
     public GameObject Ball;
     Animator anim;
-	// Use this for initialization
-	void Start () {
-       
+    float time;
+    int ttime;
+    public float b_rot;
+    public Vector2 ppos;
+    GameObject Player;
+    // Use this for initialization
+    void Start () {
+       Player= GameObject.FindWithTag("Player");
     }
-	
-	// Update is called once per frame
-	void Update () {
-        Quaternion t = this.transform.rotation;
-        float tp = t.eulerAngles.z ;
-        GameObject Player = GameObject.FindWithTag("Player");
-        Debug.Log(tp);
-        
-        /*if (tp >= 45)
-        {
-            Instantiate(Ball.gameObject);
-            this.GetComponent<Animator>().speed = 0;
 
-        }*/
+    // Update is called once per frame
+    void Update()
+    {
+        ppos = this.transform.position;
+        b_rot = this.transform.localEulerAngles.z;
+        //Debug.Log(b_rot);
+             
+        time += Time.deltaTime;
+        if (time >= 0.5f)
+        {
+            time = 0;
+            Instantiate(Ball);
+        }
     }
+
+
 
    /* private void OnTriggerEnter2D(Collider2D collision)
     {

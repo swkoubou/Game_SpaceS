@@ -11,10 +11,10 @@ public class batery_des : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GameObject Player = GameObject.FindWithTag("Player");
-        Vector2 Ppos = Player.transform.position;
+        GameObject Camera = GameObject.FindWithTag("MainCamera");
+        Vector2 Cpos = Camera.transform.position;
         Vector2 Tpos = this.transform.position;
-        float len = Ppos.y - Tpos.y;
-        if (len > 1) Destroy(this.gameObject);
+        float len = Cpos.y - Tpos.y;
+        if (len > 5) Destroy(this.gameObject);
 	}
 }
